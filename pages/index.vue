@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 const { data } = await useFetch('/api/data.json')
 
+console.log(data.value)
+
 if (!data.value) {
   throw createError({
     statusCode: 404,

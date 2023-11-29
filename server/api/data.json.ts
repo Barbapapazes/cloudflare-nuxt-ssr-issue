@@ -3,7 +3,11 @@ export default defineEventHandler(async (event) => {
   const packages = unjsProjects.filter(project => project.npm).sort((a, b) => b.title.localeCompare(a.title))
   const packageNames = packages.map(pkg => pkg.npm?.name)
 
+  console.log(unjsProjects)
+
   const npmPackages = await Promise.all(packages.map(pkg => $fetch(`https://unnpm.pages.dev/packages/${pkg.npm?.name}`)))
+
+  console.log(npmPackages)
 
   setResponseHeader(event, 'Content-Type', 'application/json')
   return npmPackages.map(({ package: pkg }) => {
