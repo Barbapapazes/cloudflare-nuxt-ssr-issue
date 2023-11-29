@@ -7,8 +7,10 @@ if (!data.value) {
     message: 'Custom Not found'
   })
 }
+
+const items = computed(() => data.value.sort())
 </script>
 
 <template>
-  <div>{{ data }}</div>
+  <div>{{ items }}</div>
 </template>
